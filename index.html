@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajito Nelson - Data Engineer & AI Enthusiast</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2d3748;
+        --secondary: #4a5568;
+        --accent: #3182ce;
+        --light: #f7fafc;
+        --dark: #1a202c;
+        --success: #38a169;
+        --info: #3182ce;
+        --warning: #d69e2e;
+        --danger: #e53e3e;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        color: var(--secondary);
+        line-height: 1.6;
+      }
+
+      /* Header Styles */
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--dark) 100%
+        );
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .profile-container {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: 1.5rem;
+        object-fit: cover;
+      }
+
+      .profile-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-subtitle {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .profile-location {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        transform: translateY(-3px);
+        background-color: var(--accent);
+      }
+
+      /* Navigation */
+      .navbar {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+      }
+
+      .nav-list {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-list li a {
+        text-decoration: none;
+        color: var(--secondary);
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-list li a:hover {
+        color: var(--accent);
+        background-color: rgba(49, 130, 206, 0.1);
+      }
+
+      /* Main Content */
+      .main-content {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+      }
+
+      .section {
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        position: relative;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      /* About */
+      .about-content {
+        display: flex;
+        gap: 3rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .about-text {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .about-stats {
+        flex: 1;
+        min-width: 300px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .stat-item {
+        background-color: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-icon {
+        font-size: 2rem;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--secondary);
+      }
+
+      /* Skills */
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .skill-category {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .skill-category-header {
+        background-color: var(--primary);
+        color: white;
+        padding: 1rem 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .skill-list {
+        padding: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .skill-item {
+        background-color: var(--light);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .skill-item i {
+        color: var(--accent);
+      }
+
+      /* Experience */
+      .timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background-color: var(--light);
+        border-radius: 2px;
+      }
+
+      .timeline-item {
+        position: relative;
+        padding-bottom: 3rem;
+      }
+
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -2rem;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: var(--accent);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--accent);
+      }
+
+      .timeline-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+
+      .timeline-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-subtitle {
+        font-size: 1rem;
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-date {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.8rem;
+        background-color: var(--light);
+        border-radius: 50px;
+        color: var(--secondary);
+        white-space: nowrap;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content {
+        background-color: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .timeline-content p {
+        margin-bottom: 1rem;
+      }
+
+      .timeline-content ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .timeline-content ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .project-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .project-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .project-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .project-description {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .project-tag {
+        font-size: 0.8rem;
+        background-color: var(--light);
+        color: var(--secondary);
+        padding: 0.2rem 0.6rem;
+        border-radius: 50px;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .project-links a {
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .project-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Certificates */
+      .certificates-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .certificate-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .certificate-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .certificate-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .certificate-issuer {
+        font-size: 0.9rem;
+        color: var(--secondary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .certificate-date {
+        font-size: 0.85rem;
+        color: var(--secondary);
+        margin-top: auto;
+      }
+
+      .certificate-link {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        background-color: var(--accent);
+        color: white;
+        padding: 0.8rem;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .certificate-link:hover {
+        background-color: var(--primary);
+      }
+
+      /* Contact */
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .contact-info {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .contact-icon {
+        color: var(--accent);
+        font-size: 1.5rem;
+        min-width: 1.5rem;
+      }
+
+      .contact-text h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.3rem;
+      }
+
+      .contact-text p,
+      .contact-text a {
+        font-size: 1rem;
+        color: var(--secondary);
+        text-decoration: none;
+      }
+
+      .contact-text a:hover {
+        color: var(--accent);
+      }
+
+      .contact-form {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        color: var(--secondary);
+        background-color: var(--light);
+        border: 2px solid transparent;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent);
+        background-color: white;
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+      }
+
+      .btn-primary {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--primary);
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .footer-text {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-social a {
+        color: white;
+        font-size: 1.3rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        color: var(--accent);
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .footer-copyright {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-list {
+          gap: 1rem;
+        }
+
+        .about-content {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .profile-title {
+          font-size: 2rem;
+        }
+
+        .profile-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .nav-list {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      /* Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      .section:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .section:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      .section:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+
+      .section:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+
+      /* Code style */
+      .code-container {
+        background-color: var(--dark);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .code-header {
+        background-color: #1e293b;
+        padding: 0.7rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .code-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .code-dot.red {
+        background-color: #ef4444;
+      }
+
+      .code-dot.yellow {
+        background-color: #eab308;
+      }
+
+      .code-dot.green {
+        background-color: #22c55e;
+      }
+
+      .code-title {
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-left: 1rem;
+      }
+
+      .code-content {
+        padding: 1.5rem;
+        color: #e2e8f0;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        line-height: 1.5;
+        font-size: 0.95rem;
+        overflow-x: auto;
+        white-space: pre;
+      }
+
+      .code-keyword {
+        color: #93c5fd;
+      }
+
+      .code-string {
+        color: #86efac;
+      }
+
+      .code-comment {
+        color: #94a3b8;
+      }
+
+      .code-property {
+        color: #f9a8d4;
+      }
+
+      .code-function {
+        color: #c4b5fd;
+      }
+
+      /* Animation for timeline */
+      .timeline-item {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.6s ease;
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="profile-container">
+        <img
+          src="https://github.com/ajitonelsonn.png"
+          alt="Ajito Nelson"
+          class="profile-img"
+        />
+        <h1 class="profile-title">Ajito Nelson Lucio da Costa</h1>
+        <p class="profile-subtitle">Data Engineer & AI Enthusiast</p>
+        <p class="profile-location">
+          <i class="fas fa-map-marker-alt"></i>
+          Dili, Timor-Leste
+        </p>
+        <div class="social-links">
+          <a
+            href="https://linkedin.com/in/ajitonelson"
+            target="_blank"
+            title="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://github.com/ajitonelsonn"
+            target="_blank"
+            title="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://kaggle.com/ajito89" target="_blank" title="Kaggle">
+            <i class="fab fa-kaggle"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/kharu.kharu89/"
+            target="_blank"
+            title="Facebook"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@anotilkharu59"
+            target="_blank"
+            title="YouTube"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a
+            href="https://instagram.com/kharu89_"
+            target="_blank"
+            title="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <ul class="nav-list">
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certificates">Certificates</a></li>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- About Section -->
+      <section id="about" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-user"></i>
+          About Me
+        </h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Hello! I'm Ajito Nelson, an IT Specialist (Big Data) with a
+              passion for Artificial Intelligence and Machine Learning. As a
+              native Tetum speaker, I bring a unique perspective to
+              Timor-Leste's growing tech ecosystem.
+            </p>
+            <p>
+              Currently, I work at Viettel Timor (TELEMOR), specializing in
+              designing scalable data pipelines, optimizing the Viettel Data
+              Platform, and transforming complex datasets into actionable
+              insights.
+            </p>
+            <p>My expertise includes:</p>
+            <ul>
+              <li>
+                Big Data Engineering – Building and optimizing data
+                infrastructure
+              </li>
+              <li>
+                AI & Machine Learning – Developing intelligent solutions for
+                real-world problems
+              </li>
+              <li>
+                Customer Sentiment Analysis – Understanding user preferences
+                through data
+              </li>
+              <li>
+                Dashboard Development & Automation – Enhancing decision-making
+                with data-driven insights
+              </li>
+            </ul>
+            <p>
+              Beyond work, I enjoy exploring emerging technologies,
+              collaborating with dynamic teams, and contributing to impactful
+              innovations. Let's connect and create something groundbreaking
+              together!
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-code-branch"></i>
+              </div>
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Years in Big Data</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Data Pipelines</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Certifications</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-language"></i>
+              </div>
+              <div class="stat-number">4</div>
+              <div class="stat-label">Languages</div>
+            </div>
+          </div>
+        </div>
+        <div class="code-container">
+          <div class="code-header">
+            <div class="code-dot red"></div>
+            <div class="code-dot yellow"></div>
+            <div class="code-dot green"></div>
+            <div class="code-title">about_me.py</div>
+          </div>
+          <div class="code-content">
+            <span class="code-keyword">class</span>
+            <span class="code-function">DataEngineer</span>:
+            <span class="code-keyword">def</span>
+            <span class="code-function">__init__</span>(self): self.name =
+            <span class="code-string">"Ajito Nelson"</span> self.role =
+            <span class="code-string">"Data Engineer"</span> self.company =
+            <span class="code-string">"Viettel Timor (TELEMOR)"</span>
+            self.location = <span class="code-string">"Timor-Leste"</span>
+            self.focus_areas = {
+            <span class="code-string">"Data Engineering"</span>: [<span
+              class="code-string"
+              >"ETL/ELT"</span
+            >, <span class="code-string">"Data Pipelines"</span>,
+            <span class="code-string">"Data Warehousing"</span>],
+            <span class="code-string">"Big Data"</span>: [<span
+              class="code-string"
+              >"Distributed Computing"</span
+            >, <span class="code-string">"Stream Processing"</span>,
+            <span class="code-string">"Data Lakes"</span>],
+            <span class="code-string">"AI & ML"</span>: [<span
+              class="code-string"
+              >"LLMs"</span
+            >, <span class="code-string">"Neural Networks"</span>,
+            <span class="code-string">"Machine Learning"</span>],
+            <span class="code-string">"Cloud"</span>: [<span class="code-string"
+              >"AWS"</span
+            >, <span class="code-string">"Google Cloud"</span>] }
+
+            <span class="code-keyword">def</span>
+            <span class="code-function">get_current_projects</span>(self):
+            <span class="code-keyword">return</span> [
+            <span class="code-string">"Building scalable data pipelines"</span>,
+            <span class="code-string">"Implementing LLM solutions"</span>,
+            <span class="code-string">"Optimizing ETL/ELT processes"</span>,
+            <span class="code-string">"Cloud data architecture"</span>
+            ] me = DataEngineer()
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-cogs"></i>
+          Technical Skills
+        </h2>
+        <div class="skills-container">
+          <div class="skill-category">
+            <div class="skill-category-header">Data Engineering & Big Data</div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <i class="fas fa-server"></i> Apache Hadoop
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-bolt"></i> Apache Spark
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-database"></i> Apache Hive
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-stream"></i> Apache Kafka
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-project-diagram"></i> Apache Airflow
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-exchange-alt"></i> Apache NiFi
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-sync"></i> Pentaho PDI
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-database"></i> ETL/ELT
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-warehouse"></i> Data Warehousing
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <div class="skill-category-header">AI & Development</div>
+            <div class="skill-list">
+              <div class="skill-item"><i class="fab fa-python"></i> Python</div>
+              <div class="skill-item">
+                <i class="fas fa-brain"></i> TensorFlow
+              </div>
+              <div class="skill-item"><i class="fas fa-robot"></i> OpenAI</div>
+              <div class="skill-item"><i class="fas fa-comment"></i> LLMs</div>
+              <div class="skill-item"><i class="fab fa-google"></i> Gemini</div>
+              <div class="skill-item"><i class="fab fa-meta"></i> LLMA</div>
+              <div class="skill-item"><i class="fas fa-table"></i> SQL</div>
+              <div class="skill-item">
+                <i class="fas fa-code"></i> Bash Shell
+              </div>
+              <div class="skill-item"><i class="fab fa-react"></i> Next.js</div>
+              <div class="skill-item">
+                <i class="fab fa-fastapi"></i> FastAPI
+              </div>
+
+              <div class="skill-item">
+                <i class="fab fa-flutter"></i> Flutter
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <div class="skill-category-header">Cloud & Tools</div>
+            <div class="skill-list">
+              <div class="skill-item"><i class="fab fa-aws"></i> AWS</div>
+              <div class="skill-item"><i class="fab fa-git-alt"></i> Git</div>
+              <div class="skill-item">
+                <i class="fas fa-chart-bar"></i> Tableau
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-analytics"></i> Looker Studio
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-toolbox"></i> Hardware Troubleshooting
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-network-wired"></i> Networking
+              </div>
+            </div>
+          </div>
+          <div class="skill-category">
+            <div class="skill-category-header">Languages</div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <i class="fas fa-language"></i> Tetum (Native)
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-language"></i> English (Professional)
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-language"></i> Indonesian (Limited)
+              </div>
+              <div class="skill-item">
+                <i class="fas fa-language"></i> Portuguese (Elementary)
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-briefcase"></i>
+          Work Experience
+        </h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">
+                  IT Specialist, in charge of Big Data
+                </h3>
+                <h4 class="timeline-subtitle">Viettel Timor (TELEMOR)</h4>
+              </div>
+              <span class="timeline-date">Feb 2025 - Present</span>
+            </div>
+            <div class="timeline-content">
+              <p>
+                As a Big Data Engineer at Viettel Timor (TELEMOR), I specialize
+                in the maintenance and optimization of the Viettel Data
+                Platform. My responsibilities include:
+              </p>
+              <ul>
+                <li>
+                  Utilizing tools such as Hadoop, Spark, Nifi, Pentaho Community
+                  Edition, Apache Airflow, Git, and Hive for efficient ETL
+                  processes
+                </li>
+                <li>
+                  Spearheading the creation of comprehensive report dashboards
+                  using Tableau, facilitating data-driven decision-making across
+                  departments
+                </li>
+                <li>
+                  Collaborating closely with stakeholders to understand their
+                  needs and design intuitive dashboards
+                </li>
+                <li>
+                  Developing automation scripts to streamline report deployment
+                  processes
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">IT Staff, in charge of Big Data</h3>
+                <h4 class="timeline-subtitle">Viettel Timor (TELEMOR)</h4>
+              </div>
+              <span class="timeline-date">Oct 2022 - Jan 2025</span>
+            </div>
+            <div class="timeline-content">
+              <p>
+                Created reports tailored to specific departmental needs,
+                analyzing customer behavior, monitoring system performance, and
+                tracking key performance indicators.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Big Data Engineer (Internship)</h3>
+                <h4 class="timeline-subtitle">Viettel Group</h4>
+              </div>
+              <span class="timeline-date">May 2023 - Nov 2023</span>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>
+                  Mastered the Viettel Data Platform and its maintenance
+                  procedures
+                </li>
+                <li>
+                  Acquired proficiency in Hadoop, Spark, Nifi, Pentaho, Airflow,
+                  Git, and Hive
+                </li>
+                <li>
+                  Collaborated remotely with Timor-Leste office on report
+                  creation
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">IT Staff</h3>
+                <h4 class="timeline-subtitle">Viettel Timor (TELEMOR)</h4>
+              </div>
+              <span class="timeline-date">Mar 2022 - Sep 2022</span>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>
+                  Troubleshooting errors on the Telemor Website and other
+                  systems
+                </li>
+                <li>
+                  Collaborated with partners to develop chatbots across multiple
+                  platforms
+                </li>
+                <li>Utilized SQL to query data for department reports</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Enumerator</h3>
+                <h4 class="timeline-subtitle">
+                  National Institute Of Statistics Timor-Leste
+                </h4>
+              </div>
+              <span class="timeline-date">Jul 2021 - Aug 2021</span>
+            </div>
+            <div class="timeline-content">
+              <p>
+                Participated in The Socio-Economic Impact Assessment Program of
+                COVID-19 in Timor-Leste 2.0 (SEIA2.0), a partnership between
+                UNDP and the National Institute Of Statistics Timor-Leste.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Short-Term Stay Program</h3>
+                <h4 class="timeline-subtitle">Gifu University</h4>
+              </div>
+              <span class="timeline-date">Dec 2019 - Mar 2020</span>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>
+                  Studied Machine Learning, Deep Learning, and Image Processing
+                </li>
+                <li>Conducted research for undergraduate final project</li>
+                <li>Engaged in hands-on experiments and literature reviews</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Information Technology Staff</h3>
+                <h4 class="timeline-subtitle">
+                  Instituto Politécnico Betano - IPB
+                </h4>
+              </div>
+              <span class="timeline-date">Jul 2019 - Aug 2019</span>
+            </div>
+            <div class="timeline-content">
+              <ul>
+                <li>
+                  Managed network infrastructure maintenance and troubleshooting
+                </li>
+                <li>
+                  Provided hardware support and repairs for student and faculty
+                  devices
+                </li>
+                <li>
+                  Delivered technology curriculum teaching students digital
+                  skills
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-laptop-code"></i>
+          Featured Projects
+        </h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img
+              src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/309/370/datas/gallery.jpg"
+              alt="Data Pipeline"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">MedGraph Navigator</h3>
+              <p class="project-description">
+                MedGraph Navigator is a cutting-edge healthcare analytics
+                platform built on ArangoDB's powerful graph capabilities.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">ArangoDB</span>
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://devpost.com/software/medgraph-navigator"
+                  ><i class="far fa-file-alt"></i> arangodbhackathon</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/LafeAINet/raw/main/app.png"
+              alt="LafeAINet"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">LafeAINet</h3>
+              <p class="project-description">
+                LafeAINet is a comprehensive network monitoring platform
+                designed to address connectivity challenges in Timor-Leste. Our
+                solution transforms scattered social media complaints into
+                structured, actionable data through three integrated components.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Tidb</span>
+                <span class="project-tag">GIS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://lablab.ai/event/ai-for-connectivity-hackathon-building-resilient-networks/lafaek-ai/lafeainet"
+                  ><i class="far fa-file-alt"></i>
+                  ai-for-connectivity-hackathon-building-resilient-networks</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://github.com/ajitonelsonn/plant-identifier/raw/main/public/demo.png"
+              alt="Plant Identifier"
+              class="project-img"
+            />
+            <div class="project-content">
+              <h3 class="project-title">Plant Identifier</h3>
+              <p class="project-description">
+                AI-powered web application that identifies plants from images
+                using LLMA 3.2 model. It provides users with plant
+                identification and care tips, perfect for gardening enthusiasts
+                and professionals.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">LLMA 3.2</span>
+                <span class="project-tag">Next.js</span>
+                <span class="project-tag">Postgresql</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ajitonelsonn/plant-identifier"
+                  ><i class="far fa-file-alt"></i> Repo</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certificates Section -->
+      <section id="certificates" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-award"></i>
+          Certifications
+        </h2>
+        <div class="certificates-container">
+          <div class="certificate-card">
+            <div class="certificate-content">
+              <h3 class="certificate-title">My Credly Badges</h3>
+              <p class="certificate-issuer">
+                <i class="fas fa-certificate"></i> Credly
+              </p>
+              <p class="certificate-date">> 2024</p>
+            </div>
+            <a
+              href="https://www.credly.com/users/ajitonelson"
+              class="certificate-link"
+              >View Credly Badges</a
+            >
+          </div>
+          <div class="certificate-card">
+            <div class="certificate-content">
+              <h3 class="certificate-title">My Certificate on linkedin.com</h3>
+              <p class="certificate-issuer">
+                <i class="fas fa-certificate"></i> linkedin
+              </p>
+              <p class="certificate-date">> 2019</p>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/ajitonelson/details/certifications/"
+              class="certificate-link"
+              >View Certificate</a
+            >
+          </div>
+          <div class="certificate-card">
+            <div class="certificate-content">
+              <h3 class="certificate-title">My cloudskillsboost</h3>
+              <p class="certificate-issuer">
+                <i class="fas fa-certificate"></i> Google
+              </p>
+              <p class="certificate-date">> 2024</p>
+            </div>
+            <a
+              href="https://www.cloudskillsboost.google/public_profiles/d4eb9f89-0ae8-4165-99d0-1ff70c775237"
+              class="certificate-link"
+              >View cloud skill</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Volunteer Section -->
+      <section id="volunteer" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-hands-helping"></i>
+          Volunteer Experience
+        </h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">
+                  Data Cleaning of Christian and Islamic Names
+                </h3>
+                <h4 class="timeline-subtitle">United Nations Volunteers</h4>
+              </div>
+              <span class="timeline-date">May 2024</span>
+            </div>
+            <div class="timeline-content">
+              <p>
+                Contributed to the Sisaali Translation project as an Online
+                Volunteer with Sissala Heritage Foundation, supporting the
+                Sustainable Development Goals by volunteering 5 hours per week
+                for 2 weeks.
+              </p>
+              <p>
+                <a href="https://bit.ly/unvsisaala" target="_blank"
+                  >Certificate Link</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+        <h2 class="section-title">
+          <i class="fas fa-envelope"></i>
+          Get In Touch
+        </h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-item"></div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Location</h3>
+                <p>Dili, Timor-Leste</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="contact-text">
+                <h3>LinkedIn</h3>
+                <a
+                  href="https://www.linkedin.com/in/ajitonelson"
+                  target="_blank"
+                  >linkedin.com/in/ajitonelson</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form action="#" method="POST">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-control"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-text">
+          <p>Let's connect and create something groundbreaking together!</p>
+        </div>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/ajitonelson" target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a href="https://github.com/ajitonelsonn" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://kaggle.com/ajito89" target="_blank"
+            ><i class="fab fa-kaggle"></i
+          ></a>
+          <a href="https://www.facebook.com/kharu.kharu89/" target="_blank"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="https://instagram.com/kharu89_" target="_blank"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a href="https://www.youtube.com/@anotilkharu59" target="_blank"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a href="https://lablab.ai/u/@ajito_nelson529" target="_blank"
+            ><i class="fas fa-flask"></i
+          ></a>
+          <a href="https://devpost.com/ajitonelson" target="_blank"
+            ><i class="fas fa-code"></i
+          ></a>
+          <a href="https://www.credly.com/users/ajitonelson" target="_blank"
+            ><i class="fas fa-award"></i
+          ></a>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#certificates">Certificates</a>
+          <a href="#volunteer">Volunteer</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2025 Ajito Nelson. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Animate timeline items when they come into view
+      document.addEventListener("DOMContentLoaded", function () {
+        const timelineItems = document.querySelectorAll(".timeline-item");
+
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+              (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        function checkTimeline() {
+          timelineItems.forEach((item) => {
+            if (isInViewport(item)) {
+              item.classList.add("visible");
+            }
+          });
+        }
+
+        // Initial check
+        checkTimeline();
+
+        // Check when scrolling
+        window.addEventListener("scroll", checkTimeline);
+      });
+    </script>
+  </body>
+</html>
