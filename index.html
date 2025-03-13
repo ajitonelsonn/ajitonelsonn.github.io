@@ -1373,6 +1373,72 @@
         font-size: 0.9rem;
       }
 
+      .footer-github-contrib h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: white;
+        position: relative;
+        display: inline-block;
+    }
+
+    .footer-github-contrib h4::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 30px;
+        height: 3px;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .footer-github-contrib p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 1.5rem;
+    }
+
+    .github-contrib-container {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    .github-contrib-container img {
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .github-contrib-container:hover img {
+        transform: scale(1.02);
+    }
+
+    .github-follow-text {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .github-follow-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+    .github-follow-link:hover {
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    @media (max-width: 576px) {
+        .footer-github-contrib h4::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
       /* Responsive Styles */
       @media (max-width: 992px) {
         .hero-container {
@@ -2990,23 +3056,19 @@ Gender Classification Base on Face Using Image Processing and Machine Learning T
               </li>
             </ul>
           </div>
-          <div class="footer-newsletter">
-            <h4>Newsletter</h4>
-            <p>
-              Subscribe to receive updates about my latest projects and tech
-              insights.
+          <div class="footer-github-contrib">
+            <h4>GitHub Contributions</h4>
+            <p>My activity across repositories and projects</p>
+            <div class="github-contrib-container">
+              <a href="https://github.com/ajitonelsonn" target="_blank">
+                <img src="https://ghchart.rshah.org/0070f3/ajitonelsonn" alt="Ajito Nelson's GitHub Contributions" width="100%" />
+              </a>
+            </div>
+            <p class="github-follow-text">
+              <a href="https://github.com/ajitonelsonn" target="_blank" class="github-follow-link">
+                <i class="fab fa-github"></i> Follow my work on GitHub
+              </a>
             </p>
-            <form class="newsletter-form">
-              <input
-                type="email"
-                placeholder="Your email"
-                class="newsletter-input"
-                required
-              />
-              <button type="submit" class="newsletter-btn">
-                <i class="fas fa-paper-plane"></i>
-              </button>
-            </form>
           </div>
         </div>
         <div class="footer-bottom">
