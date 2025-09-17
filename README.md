@@ -7,7 +7,7 @@ This is a responsive and modern personal portfolio template created for Ajito Ne
 ## 🌐 Live Demo
 
 View the live demo at [https://ajitonelsonn.github.io](https://ajitonelsonn.github.io)
-
+Now ALready change to new website [https://ajitonelsonn.com](https://ajitonelsonn.com)
 ## ✨ Features
 
 - Responsive design that works on all devices
