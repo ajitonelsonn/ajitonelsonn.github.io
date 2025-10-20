@@ -67,11 +67,6 @@ The template uses CSS variables for easy color customization:
 
 Simply modify these values to change the color scheme.
 
-## 📬 Contact
-
-If you have questions about using this template, please contact:
-- Original creator: Ajito Nelson ([GitHub](https://github.com/ajitonelsonn), [LinkedIn](https://linkedin.com/in/ajitonelson))
-
 ---
 
 *Remember to always respect original work and give proper attribution when using templates created by others.*
