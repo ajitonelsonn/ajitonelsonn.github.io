@@ -2,8 +2,6 @@
 
 This is a responsive and modern personal portfolio template created for Ajito Nelson, a Data Engineer and AI Enthusiast based in Timor-Leste.
 
-![Portfolio Preview](https://github.com/ajitonelsonn.png)
-
 ## 🌐 Live Demo
 
 View the live demo at [https://ajitonelsonn.github.io](https://ajitonelsonn.github.io)
@@ -73,10 +71,6 @@ Simply modify these values to change the color scheme.
 
 If you have questions about using this template, please contact:
 - Original creator: Ajito Nelson ([GitHub](https://github.com/ajitonelsonn), [LinkedIn](https://linkedin.com/in/ajitonelson))
-
-## 📄 License
-
-This project is available for personal use. For commercial use or redistribution, please credit the original author.
 
 ---
 
