@@ -1,7 +1,5 @@
 # Personal Portfolio Website
 
-This is a responsive and modern personal portfolio template created for Ajito Nelson, a Data Engineer and AI Enthusiast based in Timor-Leste.
-
 ## 🌐 Live Demo
 
 View the live demo at [https://ajitonelsonn.github.io](https://ajitonelsonn.github.io)
