@@ -34,7 +34,7 @@ Now ALready change to new website [https://ajitonelsonn.com](https://ajitonelson
 
 This template was originally created for and belongs to [Ajito Nelson](https://github.com/ajitonelsonn). If you use or modify this template, please give appropriate credit by including a link to the original repository.
 
-## 📋 Customization Guide
+## 📋 Customization Guide 
 
 ### Replacing Personal Information
 
