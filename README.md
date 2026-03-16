@@ -45,26 +45,6 @@ This template was originally created for and belongs to [Ajito Nelson](https://g
 - Add your own projects in the `projects-grid` section
 - Update certifications and volunteer experience
 
-### Customizing Colors
-
-The template uses CSS variables for easy color customization:
-
-```css
-:root {
-    --primary: #2d3748;
-    --secondary: #4a5568;
-    --accent: #3182ce;
-    --light: #f7fafc;
-    --dark: #1a202c;
-    --success: #38a169;
-    --info: #3182ce;
-    --warning: #d69e2e;
-    --danger: #e53e3e;
-}
-```
-
-Simply modify these values to change the color scheme.
-
 ---
 
 *Remember to always respect original work and give proper attribution when using templates created by others.*
