@@ -4,17 +4,6 @@
 
 View the live demo at [https://ajitonelsonn.github.io](https://ajitonelsonn.github.io)
 Now ALready change to new website [https://ajitonelsonn.com](https://ajitonelsonn.com)
-## ✨ Features
-
-- Responsive design that works on all devices
-- Interactive timeline for work experience
-- Animated sections for better user experience
-- Customizable skill categories
-- Project showcase with images and tags
-- Certifications section
-- Volunteer experience section
-- Contact form
-- Comprehensive social media integration
 
 ## 🚀 Technologies Used
 
