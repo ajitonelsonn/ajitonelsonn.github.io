@@ -3,7 +3,7 @@
 ## 🌐 Live Demo
 
 View the live demo at [https://ajitonelsonn.github.io](https://ajitonelsonn.github.io)
-Now ALready change to new website [https://ajitonelsonn.com](https://ajitonelsonn.com)
+Now ALready change to new website [https://www.ajitonelson.dev/](https://www.ajitonelson.dev/)
 
 ## 🚀 Technologies Used
 
